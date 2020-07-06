@@ -1,11 +1,9 @@
 
-Learn GRPC
+Learning GRPC
 
 Protocol Buffers
 
 https://developers.google.com/protocol-buffers
-
-
 
 Raw Node.JS
 
@@ -17,7 +15,7 @@ NestJs
 https://docs.nestjs.com/microservices/grpc
 https://github.com/nestjs/nest/tree/master/sample/04-grpc/src
 
-CLI
+GRPC CLI
 ```bash
 brew install grpcurl
 ```
@@ -38,12 +36,18 @@ https://nordicapis.com/when-to-use-what-rest-graphql-webhooks-grpc/#:~:text=the%
 
 
 Problems
+
 - Developer Toolset
+
 Due to the nature of gRPC binary encoding streaming, regular HTTP/2 requests are not possible with
 tools like Postman or cURL. There is a rich community of APIs for this protocol, so there is likely
 some research
+
 - Complexity
+
 gRPC lifecycle, and the transport protocol - protocol buffers - is wholly new to rigup.
 it may not be a good idea to set up over HTTP/REST or simple GQL.
 
+```bash 
 grpcui --plaintext -import-path ./pokemon-microservice/src/protos/ -proto pokemon.proto localhost:5000
+```
