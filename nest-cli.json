@@ -1,4 +1,18 @@
 {
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src"
+  "sourceRoot": "src",
+  "projects": {
+    "pokemon-client": {
+      "type": "library",
+      "root": "libs/pokemon-client",
+      "entryFile": "index",
+      "sourceRoot": "libs/pokemon-client/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/pokemon-client/tsconfig.lib.json"
+      }
+    }
+  },
+  "compilerOptions": {
+    "webpack": false
+  }
 }

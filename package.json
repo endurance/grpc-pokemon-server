@@ -1,15 +1,15 @@
 {
-  "name": "pokemon-microservice",
-  "version": "0.0.1",
+  "name": "@endurance/grpc-pokemon-server",
+  "version": "0.0.5",
   "description": "",
   "author": "",
-  "private": true,
+  "private": false,
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
     "prestart": "./codegen/generateProtos.sh && cpy '**/*' '!**/*.ts' ../dist/ --cwd=src/ --no-overwrite --parents",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start --watch",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
@@ -64,12 +64,23 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
+    "rootDir": ".",
     "testRegex": ".spec.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node",
+    "publishConfig": {
+      "registry": "https://npm.pkg.github.com/"
+    },
+    "roots": [
+      "<rootDir>/src/",
+      "<rootDir>/libs/"
+    ],
+    "moduleNameMapper": {
+      "@app/pokemon-client/(.*)": "<rootDir>/libs/pokemon-client/src/$1",
+      "@app/pokemon-client": "<rootDir>/libs/pokemon-client/src"
+    }
   }
 }
