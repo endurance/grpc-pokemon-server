@@ -1,15 +1,21 @@
 {
   "name": "@endurance/grpc-pokemon-server",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "description": "",
   "author": "",
   "private": false,
   "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf dist && npm run codegen",
     "build": "nest build",
-    "prestart": "./codegen/generateProtos.sh && cpy '**/*' '!**/*.ts' ../dist/ --cwd=src/ --no-overwrite --parents",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"libs/**/*.ts\"",
+    "prestart": "npm run codegen",
+    "codegen": "./codegen/generateProtos.sh && cpy '**/*' '!**/*.ts' '**/*.d.ts' ../dist/ --cwd=src/ --no-overwrite --parents",
+    "format": "prettier --write \\\"src/**/*.ts\\\" \\\"test/**/*.ts\\\" \\\"src/libs/**/*.ts\\\"",
     "start": "nest start --watch",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
@@ -77,10 +83,6 @@
     "roots": [
       "<rootDir>/src/",
       "<rootDir>/libs/"
-    ],
-    "moduleNameMapper": {
-      "@app/pokemon-client/(.*)": "<rootDir>/libs/pokemon-client/src/$1",
-      "@app/pokemon-client": "<rootDir>/libs/pokemon-client/src"
-    }
+    ]
   }
 }
