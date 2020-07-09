@@ -14,6 +14,7 @@ NestJs
 
 https://docs.nestjs.com/microservices/grpc
 https://github.com/nestjs/nest/tree/master/sample/04-grpc/src
+https://github.com/stephenh/ts-proto
 
 GRPC CLI
 ```bash
@@ -47,6 +48,7 @@ some research
 
 gRPC lifecycle, and the transport protocol - protocol buffers - is wholly new to rigup.
 it may not be a good idea to set up over HTTP/REST or simple GQL.
+
 
 ```bash 
 grpcui --plaintext -import-path ./pokemon-microservice/src/protos/ -proto pokemon.proto localhost:5000
