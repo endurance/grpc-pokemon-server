@@ -3,7 +3,14 @@ syntax = "proto3";
 package pokemon;
 
 service PokemonService {
+  rpc FindAll (FindAllParams) returns (PokemonArrayResponse) {}
   rpc FindOne (PokemonById) returns (Pokemon) {}
+}
+
+message FindAllParams {}
+
+message PokemonArrayResponse {
+  repeated PokemonListItem pokemon = 1;
 }
 
 message PokemonById {
@@ -14,3 +21,9 @@ message Pokemon {
   int32 id = 1;
   string name = 2;
 }
+
+message PokemonListItem {
+  string name = 1;
+  string url = 2;
+}
+

@@ -6,10 +6,18 @@ const Pokedex = require('pokedex-promise-v2');
 
 @Controller()
 export class PokemonController {
+  private _pokedex = new Pokedex();
+
+  @GrpcMethod('PokemonService', 'FindAll')
+  public async findAll(data: any, metadata: any) {
+    const answer = await this._pokedex.getPokemonsList();
+    return {
+      pokemon: answer.results,
+    };
+  }
+
   @GrpcMethod('PokemonService', 'FindOne')
   public async findOne(data: PokemonById, metadata: any) {
-    const pokedex = new Pokedex();
-    const pokemon = await pokedex.getPokemonByName(data.id);
-    return pokemon;
+    return await this._pokedex.getPokemonByName(data.id);
   }
 }
