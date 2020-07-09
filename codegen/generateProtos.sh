@@ -1,19 +1,8 @@
-#! /bin/bash
-#cd $(dirname $0)/../
+##! /bin/bash
 
-SRC_DIR=./src/protos
-DEST_DIR=./src/generated
-
-mkdir ./src/generated
-
-node_modules/.bin/pbjs \
---target static-module \
---wrap commonjs \
---keep-case \
---path ${SRC_DIR} \
---out ${DEST_DIR}/rpc.js \
-${SRC_DIR}/**/*.proto
-
-node_modules/.bin/pbts \
---out ${DEST_DIR}/rpc.d.ts \
-${DEST_DIR}/rpc.js
+protoc \
+--plugin=./node_modules/.bin/protoc-gen-ts_proto \
+./src/**/*.proto \
+--ts_proto_opt=returnObservable=true \
+--ts_proto_opt=nestJs=true \
+--ts_proto_out=.

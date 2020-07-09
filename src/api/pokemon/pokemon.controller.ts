@@ -1,7 +1,6 @@
 import { Controller } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
-import { pokemon } from '../../generated/rpc';
-import PokemonById = pokemon.PokemonById;
+import { PokemonById } from '../../protos/pokemon';
 const Pokedex = require('pokedex-promise-v2');
 
 @Controller()
