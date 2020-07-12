@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller } from "@nestjs/common";
 import { GrpcMethod } from '@nestjs/microservices';
 import { PokemonById } from '../../protos/pokemon';
 const Pokedex = require('pokedex-promise-v2');
