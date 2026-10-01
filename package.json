@@ -31,7 +31,7 @@
     "@grpc/proto-loader": "^0.5.4",
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
-    "@nestjs/microservices": "^7.3.1",
+    "@nestjs/microservices": "^11.2.5",
     "@nestjs/platform-express": "^7.0.0",
     "@types/pokedex-promise-v2": "github:mudkipme/pokeapi-v2-typescript",
     "grpc": "^1.24.3",
